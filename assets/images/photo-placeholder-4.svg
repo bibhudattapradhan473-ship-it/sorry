@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cafeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF9"/>
+      <stop offset="60%" stop-color="#FEEEDD"/>
+      <stop offset="100%" stop-color="#FED7AA"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#cafeBg)"/>
+
+  <!-- Cafe Window sunlight rays -->
+  <polygon points="100,0 240,0 350,450 180,450" fill="#FFFBEB" opacity="0.35"/>
+  <polygon points="260,0 420,0 520,450 360,450" fill="#FFFBEB" opacity="0.25"/>
+
+  <!-- Round Wooden Table -->
+  <ellipse cx="300" cy="330" rx="260" ry="110" fill="#E8D1B5" stroke="#CBB092" stroke-width="4"/>
+  <ellipse cx="300" cy="328" rx="245" ry="100" fill="#F4E3D0"/>
+
+  <!-- Vase with flowers -->
+  <g transform="translate(300, 240)">
+    <!-- Vase -->
+    <path d="M -18 30 Q -24 60 -15 80 L 15 80 Q 24 60 18 30 Z" fill="#E0F2FE" stroke="#BAE6FD" stroke-width="2" opacity="0.85"/>
+    <ellipse cx="0" cy="30" rx="18" ry="5" fill="#BAE6FD"/>
+    <!-- Flower Stems -->
+    <line x1="0" y1="30" x2="-20" y2="-20" stroke="#16A34A" stroke-width="2.5"/>
+    <line x1="0" y1="30" x2="0" y2="-35" stroke="#16A34A" stroke-width="2.5"/>
+    <line x1="0" y1="30" x2="20" y2="-20" stroke="#16A34A" stroke-width="2.5"/>
+    <!-- Blooms -->
+    <circle cx="-20" cy="-20" r="14" fill="#FDA4AF"/>
+    <circle cx="-20" cy="-20" r="5" fill="#FEF08A"/>
+    <circle cx="0" cy="-35" r="16" fill="#F472B6"/>
+    <circle cx="0" cy="-35" r="6" fill="#FEF08A"/>
+    <circle cx="20" cy="-20" r="14" fill="#FB7185"/>
+    <circle cx="20" cy="-20" r="5" fill="#FEF08A"/>
+  </g>
+
+  <!-- Left Latte with Heart Latte Art -->
+  <ellipse cx="170" cy="330" rx="42" ry="18" fill="#D1D5DB"/>
+  <circle cx="170" cy="315" r="28" fill="#FFF"/>
+  <circle cx="170" cy="315" r="25" fill="#854D0E"/>
+  <ellipse cx="170" cy="315" rx="23" ry="18" fill="#B45309"/>
+  <!-- Latte Art Heart -->
+  <path d="M 170 318 C 164 310, 156 313, 160 320 L 170 327 L 180 320 C 184 313, 176 310, 170 318 Z" fill="#FFFBEB"/>
+
+  <!-- Right Iced Coffee / Dessert -->
+  <ellipse cx="430" cy="330" rx="42" ry="18" fill="#D1D5DB"/>
+  <path d="M 412 285 L 448 285 L 442 330 L 418 330 Z" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.5" opacity="0.6"/>
+  <path d="M 415 295 L 445 295 L 440 325 L 420 325 Z" fill="#E879F9" opacity="0.7"/>
+  <!-- Straw -->
+  <line x1="435" y1="260" x2="425" y2="325" stroke="#F43F5E" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Sweet Pastry plate in front -->
+  <ellipse cx="300" cy="370" rx="45" ry="18" fill="#FFF" stroke="#E5E7EB" stroke-width="2"/>
+  <!-- Croissant/Sweet roll -->
+  <path d="M 275 368 C 285 355 315 355 325 368 C 315 375 285 375 275 368 Z" fill="#D97706"/>
+
+  <!-- Banner -->
+  <rect x="175" y="400" width="250" height="36" rx="18" fill="#FFFFFF" opacity="0.95"/>
+  <text x="300" y="425" text-anchor="middle" fill="#8E365A" font-family="'Caveat', cursive" font-size="22" font-weight="bold">
+    Our Favorite Sweet Dates ☕
+  </text>
+</svg>

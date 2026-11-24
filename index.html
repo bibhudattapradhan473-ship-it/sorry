@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="A romantic interactive apology and love experience created especially for Itu by Bubu." />
+  <meta name="theme-color" content="#F8DCE7" />
+  <title>A Little World of Sorry ❤️</title>
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/transitions.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- Ambient Particle Canvas (Floating hearts, petals, and stars) -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Top Sticky Header -->
+  <header class="site-header" role="banner">
+    <div class="brand-wrapper">
+      <span class="brand-heart" aria-hidden="true">❤️</span>
+      <h1 class="brand-title">A Little World of Sorry</h1>
+    </div>
+
+    <div class="header-center">
+      <span class="chapter-badge" id="header-chapter-badge">Chapter 1 of 7</span>
+      <span class="chapter-title-display" id="header-chapter-title">Magical Welcome</span>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn-menu-toggle" id="btn-menu-toggle" aria-label="Open chapter navigation menu">
+        <span>Chapters</span>
+        <span aria-hidden="true">☰</span>
+      </button>
+    </div>
+
+    <!-- Header Progress Line -->
+    <div class="header-progress-track" aria-hidden="true">
+      <div class="header-progress-fill" id="header-progress-fill"></div>
+    </div>
+  </header>
+
+  <!-- Slide-out Chapter Jump Drawer -->
+  <div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+  <aside class="chapter-drawer" id="chapter-drawer" role="dialog" aria-modal="true" aria-label="Chapter Menu">
+    <div class="drawer-header">
+      <h2 class="drawer-title">Our Chapters</h2>
+      <button class="btn-drawer-close" id="btn-drawer-close" aria-label="Close menu">✕</button>
+    </div>
+    <ul class="drawer-list" id="drawer-chapter-list">
+      <!-- Dynamically populated by navigation.js -->
+    </ul>
+  </aside>
+
+  <!-- Floating Background Music Player -->
+  <aside class="music-player-pill" role="region" aria-label="Music player">
+    <div class="music-disc-icon" id="music-disc" aria-hidden="true">♫</div>
+    <div class="music-info">
+      <span class="music-title" id="music-title-text">A Gentle Melody For Itu</span>
+      <span class="music-status" id="music-status-text">Tap to play music</span>
+    </div>
+    <div class="music-controls">
+      <div class="equalizer" id="music-equalizer" aria-hidden="true">
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+      </div>
+      <button class="btn-music-toggle" id="music-toggle-btn" aria-label="Play background music">▶</button>
+    </div>
+  </aside>
+
+  <!-- Cinematic Transition Overlay Container -->
+  <div id="transition-container" aria-hidden="true"></div>
+
+  <!-- Main Chapters Viewport -->
+  <main class="chapters-viewport" role="main">
+
+    <!-- ====================================================================
+         CHAPTER 01 — MAGICAL WELCOME
+         ==================================================================== -->
+    <section class="chapter-screen active" id="chapter-1" aria-labelledby="welcome-heading">
+      <div class="chapter-inner-wrap welcome-container">
+        <span class="section-tag">A Special Message For You</span>
+        <h2 class="section-heading" id="welcome-heading">Hey, My Favourite Person...</h2>
+        <p class="section-subheading" id="welcome-subheading">I made a little something for you, Itu.</p>
+
+        <!-- Central 3D Interactive Envelope -->
+        <div class="welcome-envelope-wrapper" id="welcome-envelope-wrapper" tabindex="0" role="button" aria-label="Click to open envelope surprise">
+          <div class="envelope-3d" id="welcome-envelope-3d">
+            <div class="envelope-base"></div>
+            <!-- Letter Peek emerging on open -->
+            <div class="envelope-letter-peek">
+              <span class="peek-heart-glow">💖</span>
+              <span class="peek-text">For My Sweet Itu</span>
+            </div>
+            <!-- Folding Flaps -->
+            <div class="envelope-flaps">
+              <div class="envelope-flap-left"></div>
+              <div class="envelope-flap-right"></div>
+              <div class="envelope-flap-bottom"></div>
+            </div>
+            <div class="envelope-flap-top"></div>
+            <!-- Wax Seal Center -->
+            <div class="envelope-seal" title="Click to open"></div>
+          </div>
+        </div>
+
+        <p class="section-body" id="welcome-supporting-msg">
+          Sometimes words are not enough, but I still want to try.
+        </p>
+
+        <button class="btn-primary-action" id="btn-open-welcome">
+          <span>Open My Little Surprise</span>
+          <span aria-hidden="true">❤️</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         CHAPTER 02 — THE BIG SORRY
+         ==================================================================== -->
+    <section class="chapter-screen" id="chapter-2" aria-labelledby="big-sorry-heading">
+      <div class="chapter-inner-wrap">
+        <div class="big-sorry-card">
+          <div class="washi-tape-top" aria-hidden="true"></div>
+          <span class="section-tag" id="big-sorry-badge">Straight From My Heart</span>
+
+          <!-- Animated Teddy Bear SVG holding a glowing heart -->
+          <div class="teddy-stage">
+            <img src="assets/illustrations/teddy-bear.svg" alt="Cute teddy bear holding a heart saying For My Itu" />
+          </div>
+
+          <h2 class="section-heading" id="big-sorry-heading">I'm Really Sorry, My Love.</h2>
+
+          <div class="apology-paragraphs" id="big-sorry-paragraphs">
+            <!-- Dynamically populated from config.js -->
+          </div>
+
+          <button class="btn-primary-action" id="btn-to-notes">
+            <span>There's More I Want To Say...</span>
+            <span aria-hidden="true">➔</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         CHAPTER 03 — 50 LITTLE SORRY NOTES
+         ==================================================================== -->
+    <section class="chapter-screen" id="chapter-3" aria-labelledby="notes-section-heading">
+      <div class="chapter-inner-wrap">
+        <span class="section-tag">Fifty Little Expressions</span>
+        <h2 class="section-heading" id="notes-section-heading">50 Little Notes, One Big Sorry.</h2>
+        <p class="section-subheading" id="notes-section-subheading">
+          Because one sorry doesn't always express everything I feel.
+        </p>
+
+        <!-- Stats & Controls -->
+        <div class="notes-header-stats">
+          <div class="stat-pill">
+            <span aria-hidden="true">💌</span>
+            <span id="notes-opened-counter">Opened 0 of 50 notes</span>
+          </div>
+          <div class="notes-progress-bar-wrap" aria-label="Reading progress">
+            <div class="notes-progress-bar-fill" id="notes-progress-fill"></div>
+          </div>
+          <button class="btn-random-note" id="btn-random-note" aria-label="Open a random note">
+            <span>Surprise Note</span>
+            <span aria-hidden="true">✨</span>
+          </button>
+        </div>
+
+        <!-- Tag Filters -->
+        <div class="notes-tag-filters" id="notes-tag-filters" role="group" aria-label="Filter notes by topic">
+          <!-- Dynamically populated by notes.js -->
+        </div>
+
+        <!-- 50 Notes Grid -->
+        <div class="notes-grid" id="notes-grid">
+          <!-- 50 note cards dynamically populated by notes.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         CHAPTER 04 — OPEN WHEN... LETTERS
+         ==================================================================== -->
+    <section class="chapter-screen" id="chapter-4" aria-labelledby="open-when-heading">
+      <div class="chapter-inner-wrap">
+        <span class="section-tag">Keep These Close</span>
+        <h2 class="section-heading" id="open-when-heading">Little Letters For Different Moments.</h2>
+        <p class="section-subheading">Words to comfort your heart whenever you need them.</p>
+
+        <div class="jar-experience-wrapper">
+          <!-- Illustrated Glass Memory Jar -->
+          <div class="glass-jar-display">
+            <img src="assets/illustrations/memory-jar.svg" alt="Illustrated glass jar with glowing hearts and letters for Itu" />
+          </div>
+
+          <!-- The 5 Open When Envelopes -->
+          <div class="open-when-letters-column" id="open-when-list">
+            <!-- Dynamically populated by letters.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         CHAPTER 05 — OUR LITTLE MEMORIES (SCRAPBOOK GALLERY)
+         ==================================================================== -->
+    <section class="chapter-screen" id="chapter-5" aria-labelledby="gallery-section-heading">
+      <div class="chapter-inner-wrap">
+        <span class="section-tag">Scrapbook of Us</span>
+        <h2 class="section-heading" id="gallery-section-heading">Some Moments Are Too Precious To Forget.</h2>
+        <p class="section-subheading" id="gallery-section-subheading">
+          A little scrapbook of memories, laughter, and why you mean everything to me.
+        </p>
+
+        <!-- Polaroid Cards Grid -->
+        <div class="gallery-grid" id="gallery-grid">
+          <!-- Dynamically populated by gallery.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         CHAPTER 06 — A LETTER FROM MY HEART
+         ==================================================================== -->
+    <section class="chapter-screen" id="chapter-6" aria-labelledby="heart-letter-heading">
+      <div class="chapter-inner-wrap">
+        <span class="section-tag">Personal Letter</span>
+        <h2 class="section-heading" id="heart-letter-heading">Something I Want You To Know...</h2>
+
+        <div class="heart-letter-wrapper">
+          <!-- Big Wax Sealed Envelope in center -->
+          <div class="big-heart-envelope" id="big-heart-envelope" tabindex="0" role="button" aria-label="Click to break wax seal and open letter">
+            <div class="big-envelope-seal">
+              <img src="assets/illustrations/wax-seal.svg" alt="Heart wax seal with Bubu and Itu initials" />
+            </div>
+            <p class="envelope-click-hint">Click the wax seal to read my letter ❤️</p>
+          </div>
+
+          <!-- Unfolded Paper Letter -->
+          <article class="heart-letter-paper" id="heart-letter-paper">
+            <div class="letter-watermark" aria-hidden="true">♥</div>
+            <h3 class="letter-salutation" id="heart-letter-salutation">My dearest Itu,</h3>
+
+            <div class="letter-body-paragraphs" id="heart-letter-paragraphs">
+              <!-- Dynamically populated by app.js -->
+            </div>
+
+            <div class="letter-closing-wrap">
+              <span class="letter-closing" id="heart-letter-closing">With love,</span>
+              <span class="letter-signature signature-animate" id="heart-letter-signature">Your Bubu ❤️</span>
+            </div>
+
+            <div style="margin-top: 2.5rem; text-align: center;">
+              <button class="btn-primary-action" id="btn-to-final-surprise">
+                <span>Continue To My Last Surprise</span>
+                <span aria-hidden="true">➔</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         CHAPTER 07 — THE FINAL SURPRISE
+         ==================================================================== -->
+    <section class="chapter-screen" id="chapter-7" aria-labelledby="final-heading">
+      <div class="chapter-inner-wrap">
+        <div class="final-surprise-card">
+          <div class="final-glowing-heart-wrap">
+            <span class="final-glowing-heart" aria-hidden="true">💖</span>
+          </div>
+
+          <h2 class="section-heading" id="final-heading">One Last Thing, My Love...</h2>
+
+          <p class="section-body" id="final-message">
+            No matter how beautiful this little website looks, what matters most is that I understand your feelings and make an honest effort to do better.
+          </p>
+
+          <div class="final-question-box">
+            <p class="final-question-text" id="final-question">
+              Can I make things better, one little step at a time?
+            </p>
+          </div>
+
+          <!-- The Two Interactive Response Options -->
+          <div class="final-options-row">
+            <button class="btn-option-yes" id="btn-option-yes">Yes, Let's Talk ❤️</button>
+            <button class="btn-option-time" id="btn-option-time">I Need A Little Time 🌷</button>
+          </div>
+
+          <!-- Outcome Box (Reveals after selecting either option) -->
+          <div class="final-outcome-box" id="final-outcome-box" role="status" aria-live="polite">
+            <span class="outcome-badge" id="outcome-badge">Together</span>
+            <h3 class="outcome-heading" id="outcome-heading">Thank you, my love.</h3>
+            <p class="outcome-message" id="outcome-message"></p>
+
+            <button class="btn-replay" id="btn-replay-experience">
+              <span id="btn-replay-text">Replay Our Little Story ↺</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Fixed Bottom Navigation System -->
+  <nav class="site-nav-bottom" role="navigation" aria-label="Chapter navigation">
+    <button class="nav-btn btn-prev" id="btn-nav-prev" disabled aria-label="Go to previous chapter">
+      <span aria-hidden="true">←</span>
+      <span>Previous</span>
+    </button>
+
+    <div class="nav-dots" id="nav-dots-container" role="tablist" aria-label="Chapter progress">
+      <!-- 7 Dots populated by navigation.js -->
+    </div>
+
+    <button class="nav-btn btn-next" id="btn-nav-next" aria-label="Go to next chapter">
+      <span>Next Chapter</span>
+      <span aria-hidden="true">➔</span>
+    </button>
+  </nav>
+
+  <!-- ====================================================================
+       MODAL DIALOGS
+       ==================================================================== -->
+
+  <!-- Modal 1: Note Details Modal (Chapter 03) -->
+  <div class="modal-overlay" id="note-modal" role="dialog" aria-modal="true" aria-labelledby="modal-note-title">
+    <div class="modal-note-card" id="modal-card-inner">
+      <button class="btn-modal-close" id="btn-close-note-modal" aria-label="Close note">✕</button>
+
+      <div class="modal-note-tag-row">
+        <span class="modal-note-id" id="modal-note-num">Note #01 of 50</span>
+        <span class="note-card-tag" id="modal-note-tag">Regret</span>
+      </div>
+
+      <h3 class="modal-note-title" id="modal-note-title">Title of Note</h3>
+      <div class="modal-note-body" id="modal-note-body">Full note content goes here...</div>
+
+      <div class="modal-note-nav">
+        <button class="btn-modal-nav" id="btn-modal-prev-note" aria-label="Previous note">← Previous</button>
+        <span style="font-size: 0.82rem; color: var(--color-text-muted);">Use ← → arrow keys</span>
+        <button class="btn-modal-nav" id="btn-modal-next-note" aria-label="Next note">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Open When Unfolded Letter Modal (Chapter 04) -->
+  <div class="modal-overlay" id="letter-unfolded-modal" role="dialog" aria-modal="true" aria-labelledby="unfolded-letter-title">
+    <div class="modal-unfolded-letter" id="unfolded-letter-card">
+      <button class="btn-modal-close" id="btn-close-letter-modal" aria-label="Close letter">✕</button>
+
+      <div class="unfolded-header">
+        <div class="unfolded-badge" id="unfolded-letter-badge">Open When Letter</div>
+        <h3 class="unfolded-title" id="unfolded-letter-title">Open When You're Angry</h3>
+      </div>
+
+      <div class="unfolded-text" id="unfolded-letter-content">
+        <!-- Letter content populated by letters.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Scrapbook Gallery Lightbox (Chapter 05) -->
+  <div class="lightbox-modal" id="gallery-lightbox" role="dialog" aria-modal="true" aria-label="Photograph Lightbox">
+    <div class="lightbox-content">
+      <button class="btn-modal-close" id="btn-close-lightbox" aria-label="Close photo">✕</button>
+
+      <button class="lightbox-nav-prev" id="btn-lightbox-prev" aria-label="Previous photo">‹</button>
+      <button class="lightbox-nav-next" id="btn-lightbox-next" aria-label="Next photo">›</button>
+
+      <img class="lightbox-img" id="lightbox-img" src="" alt="Scrapbook Memory" />
+      <h4 class="polaroid-title" id="lightbox-title">Memory Title</h4>
+      <p class="lightbox-caption" id="lightbox-caption">Caption</p>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules in Dependency Order -->
+  <script src="js/config.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/notes.js"></script>
+  <script src="js/letters.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

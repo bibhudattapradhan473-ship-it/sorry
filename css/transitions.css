@@ -1,0 +1,429 @@
+/* ==========================================================================
+   A LITTLE WORLD OF SORRY ❤️
+   Cinematic Chapter-to-Chapter Transitions
+   ========================================================================== */
+
+/* --- Central Transition Overlay Container --- */
+#transition-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 250;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   TRANSITION 01: WELCOME → BIG SORRY
+   A glowing heart emerges from the envelope, expands and reveals the next chapter.
+   ========================================================================== */
+.t1-heart-portal {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  color: var(--color-vibrant-pink);
+  filter: drop-shadow(0 0 25px rgba(255, 71, 126, 0.9));
+  transform: scale(0.1);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.t1-active .t1-heart-portal {
+  animation: t1HeartExpand 0.95s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+@keyframes t1HeartExpand {
+  0% {
+    transform: scale(0.2) rotate(0deg);
+    opacity: 0.2;
+  }
+  40% {
+    transform: scale(1.5) rotate(10deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 45px rgba(255, 71, 126, 1));
+  }
+  80% {
+    transform: scale(18) rotate(0deg);
+    opacity: 1;
+    background: radial-gradient(circle, #FF477E 0%, #F8DCE7 70%, transparent 100%);
+  }
+  100% {
+    transform: scale(30);
+    opacity: 0;
+  }
+}
+
+.chapter-screen.t1-out {
+  animation: t1FadeShrink 0.6s ease forwards;
+}
+
+.chapter-screen.t1-in {
+  animation: t1RevealExpand 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes t1FadeShrink {
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+
+@keyframes t1RevealExpand {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ==========================================================================
+   TRANSITION 02: BIG SORRY → SORRY NOTES
+   The current screen transforms into a floating paper sheet, folding and unfolding
+   to reveal the collection of notes.
+   ========================================================================== */
+.t2-origami-paper {
+  position: absolute;
+  width: min(650px, 90vw);
+  height: min(450px, 70vh);
+  background: #FFFDF9;
+  border-radius: var(--radius-md);
+  box-shadow: 0 30px 80px rgba(73, 51, 59, 0.35);
+  border: 1px solid var(--glass-border);
+  transform: scale(0) rotateX(90deg);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.t2-active .t2-origami-paper {
+  animation: t2OrigamiUnfold 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes t2OrigamiUnfold {
+  0% {
+    transform: scale(0.3) rotateX(90deg) rotateZ(-10deg);
+    opacity: 0;
+  }
+  45% {
+    transform: scale(1.05) rotateX(0deg) rotateZ(3deg);
+    opacity: 1;
+    box-shadow: 0 35px 90px rgba(142, 54, 90, 0.4);
+  }
+  75% {
+    transform: scale(1.2) rotateX(0deg) rotateZ(0deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.chapter-screen.t2-out {
+  animation: t2FoldAway 0.55s ease forwards;
+}
+
+.chapter-screen.t2-in {
+  animation: t2UnfoldIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes t2FoldAway {
+  to {
+    opacity: 0;
+    transform: scale(0.85) rotateX(25deg);
+  }
+}
+
+@keyframes t2UnfoldIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ==========================================================================
+   TRANSITION 03: SORRY NOTES → OPEN WHEN
+   Small paper notes float upwards in a vortex and transform into a letter collection.
+   ========================================================================== */
+.t3-notes-swarm {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.t3-active .t3-notes-swarm {
+  opacity: 1;
+}
+
+.t3-mini-note {
+  position: absolute;
+  width: 70px;
+  height: 55px;
+  background: #FFFDF8;
+  border-radius: 6px;
+  border: 1px solid var(--color-rose-pink);
+  box-shadow: 0 8px 20px rgba(73, 51, 59, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--color-burgundy);
+}
+
+.t3-active .t3-mini-note:nth-child(1) { left: 15%; top: 90%; animation: t3FlyUp 0.9s cubic-bezier(0.2, 0.7, 0.3, 1) forwards 0.05s; }
+.t3-active .t3-mini-note:nth-child(2) { left: 35%; top: 95%; animation: t3FlyUp 0.95s cubic-bezier(0.2, 0.7, 0.3, 1) forwards 0.12s; }
+.t3-active .t3-mini-note:nth-child(3) { left: 55%; top: 92%; animation: t3FlyUp 0.85s cubic-bezier(0.2, 0.7, 0.3, 1) forwards 0.08s; }
+.t3-active .t3-mini-note:nth-child(4) { left: 75%; top: 96%; animation: t3FlyUp 0.92s cubic-bezier(0.2, 0.7, 0.3, 1) forwards 0.15s; }
+.t3-active .t3-mini-note:nth-child(5) { left: 45%; top: 98%; animation: t3FlyUp 1s cubic-bezier(0.2, 0.7, 0.3, 1) forwards 0.1s; }
+
+@keyframes t3FlyUp {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(0.7);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-90vh) rotate(380deg) scale(1.1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(540deg) scale(0.4);
+    opacity: 0;
+  }
+}
+
+.chapter-screen.t3-out {
+  animation: t3DriftUp 0.6s ease forwards;
+}
+
+.chapter-screen.t3-in {
+  animation: t3FadeFromLight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes t3DriftUp {
+  to {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.96);
+  }
+}
+
+@keyframes t3FadeFromLight {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ==========================================================================
+   TRANSITION 04: OPEN WHEN → MEMORIES
+   Romantic rose petals sweep across the screen, parting to reveal the scrapbook gallery.
+   ========================================================================== */
+.t4-petal-curtain {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(248, 220, 231, 0.95), rgba(239, 167, 192, 0.95));
+  clip-path: circle(0% at 50% 50%);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.t4-active .t4-petal-curtain {
+  animation: t4PetalWipe 1s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+@keyframes t4PetalWipe {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+    opacity: 0;
+  }
+  40% {
+    clip-path: circle(80% at 50% 50%);
+    opacity: 1;
+  }
+  75% {
+    clip-path: circle(120% at 50% 50%);
+    opacity: 0.9;
+  }
+  100% {
+    clip-path: circle(150% at 50% 50%);
+    opacity: 0;
+  }
+}
+
+.chapter-screen.t4-out {
+  animation: t4PetalOut 0.55s ease forwards;
+}
+
+.chapter-screen.t4-in {
+  animation: t4GalleryReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes t4PetalOut {
+  to {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
+@keyframes t4GalleryReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   TRANSITION 05: MEMORIES → HEART LETTER
+   Photographs gently move away. A glowing envelope appears in the centre.
+   ========================================================================== */
+.t5-wax-halo {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #E11D48 0%, #881337 60%, transparent 100%);
+  filter: drop-shadow(0 0 35px rgba(225, 29, 72, 0.8));
+  opacity: 0;
+  transform: scale(0.2);
+}
+
+.t5-active .t5-wax-halo {
+  animation: t5HaloPulse 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes t5HaloPulse {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 0.8;
+  }
+  80% {
+    transform: scale(2.6);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+
+.chapter-screen.t5-out {
+  animation: t5ScatterPhotos 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.chapter-screen.t5-in {
+  animation: t5EnvelopeArrive 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes t5ScatterPhotos {
+  to {
+    opacity: 0;
+    transform: scale(1.1) rotate(2deg);
+    filter: blur(4px);
+  }
+}
+
+@keyframes t5EnvelopeArrive {
+  from {
+    opacity: 0;
+    transform: scale(0.75) translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ==========================================================================
+   TRANSITION 06: HEART LETTER → FINAL SURPRISE
+   The envelope releases a glowing heart that expands into a full-screen cinematic reveal.
+   ========================================================================== */
+.t6-cinematic-beam {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, #FFF0F5 0%, #F8DCE7 40%, rgba(225, 29, 72, 0.2) 75%, transparent 100%);
+  opacity: 0;
+  transform: scale(0.1);
+}
+
+.t6-active .t6-cinematic-beam {
+  animation: t6BeamExplosion 1.05s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+}
+
+@keyframes t6BeamExplosion {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  45% {
+    transform: scale(1.2);
+    opacity: 1;
+    filter: drop-shadow(0 0 50px #FF477E);
+  }
+  80% {
+    transform: scale(2.5);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.chapter-screen.t6-out {
+  animation: t6LetterFade 0.6s ease forwards;
+}
+
+.chapter-screen.t6-in {
+  animation: t6ClimaxReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes t6LetterFade {
+  to {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes t6ClimaxReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

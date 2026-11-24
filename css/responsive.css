@@ -1,0 +1,280 @@
+/* ==========================================================================
+   A LITTLE WORLD OF SORRY ❤️
+   Mobile-First & Responsive Stylesheet
+   ========================================================================== */
+
+/* --- Safe Area Support for Modern Android & iOS --- */
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+.site-header {
+  padding-top: var(--safe-top);
+  height: calc(var(--header-height) + var(--safe-top));
+}
+
+.site-nav-bottom {
+  padding-bottom: var(--safe-bottom);
+  height: calc(var(--nav-bottom-height) + var(--safe-bottom));
+}
+
+.chapters-viewport {
+  padding-top: calc(var(--header-height) + var(--safe-top));
+  padding-bottom: calc(var(--nav-bottom-height) + var(--safe-bottom));
+}
+
+/* --- Mobile Devices (<= 768px) --- */
+@media screen and (max-width: 768px) {
+  :root {
+    --header-height: 58px;
+    --nav-bottom-height: 68px;
+  }
+
+  .site-header {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .brand-title {
+    font-size: 1rem;
+  }
+
+  .chapter-badge {
+    font-size: 0.72rem;
+    padding: 0.15rem 0.55rem;
+  }
+
+  .chapter-title-display {
+    display: none; /* Keep clean on small mobile headers */
+  }
+
+  .site-nav-bottom {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .nav-btn {
+    padding: 0.55rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .nav-dots {
+    gap: 0.4rem;
+  }
+
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .nav-dot.active {
+    width: 20px;
+  }
+
+  /* Music Pill Repositioning on Mobile */
+  .music-player-pill {
+    bottom: 5rem;
+    right: 1rem;
+    padding: 0.35rem 0.75rem;
+    gap: 0.45rem;
+    max-width: 220px;
+  }
+
+  .music-title {
+    max-width: 90px;
+    font-size: 0.72rem;
+  }
+
+  .music-status {
+    font-size: 0.62rem;
+  }
+
+  /* Chapter 01 — Mobile Welcome Envelope */
+  .welcome-envelope-wrapper {
+    width: min(300px, 86vw);
+    height: 200px;
+  }
+
+  .envelope-flap-left, .envelope-flap-right {
+    border-top-width: 100px;
+    border-bottom-width: 100px;
+  }
+
+  .envelope-flap-left { border-left-width: 150px; }
+  .envelope-flap-right { border-right-width: 150px; }
+  
+  .envelope-flap-bottom {
+    border-left-width: 150px;
+    border-right-width: 150px;
+    border-bottom-width: 110px;
+  }
+
+  .envelope-flap-top {
+    border-left-width: 150px;
+    border-right-width: 150px;
+    border-top-width: 115px;
+  }
+
+  .envelope-seal {
+    width: 48px;
+    height: 48px;
+    top: 92px;
+  }
+
+  .envelope-letter-peek {
+    height: 150px;
+  }
+
+  .envelope-3d.open .envelope-letter-peek {
+    transform: translateY(-60px);
+  }
+
+  /* Chapter 02 — Big Sorry Card */
+  .big-sorry-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .teddy-stage {
+    width: 160px;
+  }
+
+  /* Chapter 03 — 50 Notes Grid */
+  .notes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+
+  .note-card-item {
+    min-height: 145px;
+    padding: 1rem 0.75rem;
+  }
+
+  .note-card-title {
+    font-size: 0.92rem;
+  }
+
+  .note-card-excerpt {
+    font-size: 0.76rem;
+  }
+
+  .notes-header-stats {
+    gap: 0.75rem;
+  }
+
+  /* Chapter 04 — Memory Jar */
+  .jar-experience-wrapper {
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .glass-jar-display {
+    width: 220px;
+  }
+
+  .open-when-envelope-item {
+    padding: 0.9rem 1.1rem;
+  }
+
+  .letter-mini-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+
+  .letter-item-title {
+    font-size: 1.05rem;
+  }
+
+  /* Chapter 05 — Polaroid Gallery */
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 340px;
+  }
+
+  .lightbox-nav-prev { left: 8px; }
+  .lightbox-nav-next { right: 8px; }
+
+  /* Chapter 06 — Heart Letter */
+  .big-heart-envelope {
+    width: 90vw;
+    height: 260px;
+  }
+
+  .big-envelope-seal {
+    width: 72px;
+    height: 72px;
+  }
+
+  .heart-letter-paper {
+    padding: 1.75rem 1.25rem;
+  }
+
+  /* Chapter 07 — Final Surprise */
+  .final-surprise-card {
+    padding: 2rem 1.25rem;
+  }
+
+  .final-glowing-heart {
+    font-size: 3.5rem;
+  }
+
+  .final-options-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn-option-yes, .btn-option-time {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* --- Extra Small Android Phones (<= 380px) --- */
+@media screen and (max-width: 380px) {
+  .notes-grid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+  }
+
+  .brand-title {
+    font-size: 0.92rem;
+  }
+
+  .btn-primary-action {
+    padding: 0.85rem 1.6rem;
+    font-size: 0.95rem;
+  }
+
+  .section-heading {
+    font-size: 1.85rem;
+  }
+}
+
+/* --- Tablets & Laptops (769px to 1024px) --- */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .notes-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .jar-experience-wrapper {
+    gap: 2rem;
+  }
+}
+
+/* --- Desktops & Wide Screens (>= 1025px) --- */
+@media screen and (min-width: 1025px) {
+  .notes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

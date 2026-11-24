@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="nightBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D1B2D"/>
+      <stop offset="50%" stop-color="#49333B"/>
+      <stop offset="100%" stop-color="#7B4B5A"/>
+    </linearGradient>
+    <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFBEB" stop-opacity="0.95"/>
+      <stop offset="40%" stop-color="#FDE68A" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#nightBg)"/>
+
+  <!-- Moon in night sky -->
+  <circle cx="480" cy="90" r="45" fill="#FEF3C7"/>
+  <circle cx="468" cy="85" r="40" fill="url(#nightBg)"/>
+
+  <!-- Twinkling stars -->
+  <circle cx="80" cy="70" r="2" fill="#FFF"/>
+  <circle cx="140" cy="120" r="1.5" fill="#FFF"/>
+  <circle cx="220" cy="60" r="2.5" fill="#FFF"/>
+  <circle cx="340" cy="85" r="1.5" fill="#FFF"/>
+  <circle cx="530" cy="160" r="2" fill="#FFF"/>
+
+  <!-- Window Frame -->
+  <rect x="70" y="80" width="460" height="260" rx="12" fill="#1E131D" opacity="0.4" stroke="#D4AFB9" stroke-width="3"/>
+  <line x1="300" y1="80" x2="300" y2="340" stroke="#D4AFB9" stroke-width="2"/>
+  <line x1="70" y1="210" x2="530" y2="210" stroke="#D4AFB9" stroke-width="2"/>
+
+  <!-- Window Sill with Table -->
+  <rect x="0" y="320" width="600" height="130" fill="#3D2631"/>
+  <rect x="0" y="320" width="600" height="12" fill="#5A3A4A"/>
+
+  <!-- Lamp Glow on Table -->
+  <circle cx="160" cy="270" r="90" fill="url(#lampGlow)"/>
+
+  <!-- Two Cozy Mugs steaming -->
+  <!-- Mug 1 (Pink) -->
+  <rect x="250" y="310" width="42" height="50" rx="8" fill="#F472B6"/>
+  <path d="M 292 322 C 304 322 304 346 292 346" stroke="#F472B6" stroke-width="4" fill="none"/>
+  <!-- Mug 2 (Cream) -->
+  <rect x="315" y="310" width="42" height="50" rx="8" fill="#FDF2E9"/>
+  <path d="M 315 322 C 303 322 303 346 315 346" stroke="#FDF2E9" stroke-width="4" fill="none"/>
+
+  <!-- Steam floating into a heart -->
+  <path d="M 271 300 Q 280 275 290 280 Q 300 285 304 260" stroke="#FFF" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
+  <path d="M 336 300 Q 325 275 318 280 Q 308 285 304 260" stroke="#FFF" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"/>
+  <path d="M 304 250 C 298 240 288 244 294 254 L 304 264 L 314 254 C 320 244 310 240 304 250 Z" fill="#FF85A1" opacity="0.8"/>
+
+  <!-- Banner -->
+  <rect x="170" y="385" width="260" height="38" rx="19" fill="#FFFFFF" opacity="0.95"/>
+  <text x="300" y="410" text-anchor="middle" fill="#8E365A" font-family="'Caveat', cursive" font-size="22" font-weight="bold">
+    Late Night Talks With You 🌙
+  </text>
+</svg>
